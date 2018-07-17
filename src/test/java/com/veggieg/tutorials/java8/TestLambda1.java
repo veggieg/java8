@@ -39,11 +39,11 @@ public class TestLambda1 {
     }
 
     List<Employee> emps = Arrays.asList(
-            new Employee(101, "张三", 18, 9999.99),
-            new Employee(102, "李四", 59, 6666.66),
-            new Employee(103, "王五", 28, 3333.33),
-            new Employee(104, "赵六", 8, 7777.77),
-            new Employee(105, "田七", 38, 5555.55)
+        new Employee(101, "张三", 18, 9999.99),
+        new Employee(102, "李四", 59, 6666.66),
+        new Employee(103, "王五", 28, 3333.33),
+        new Employee(104, "赵六", 8, 7777.77),
+        new Employee(105, "田七", 38, 5555.55)
     );
 
     /// 需求：获取公司中年龄小于 35 的员工信息
@@ -111,7 +111,7 @@ public class TestLambda1 {
 
     //优化方式二：匿名内部类
     @Test
-    public void test5(){
+    public void test5() {
         List<Employee> list = filterEmployee(emps, new MyPredicate<Employee>() {
             @Override
             public boolean test(Employee t) {
@@ -126,7 +126,7 @@ public class TestLambda1 {
 
     //优化方式三：Lambda 表达式
     @Test
-    public void test6(){
+    public void test6() {
         List<Employee> list = filterEmployee(emps, (e) -> e.getAge() <= 35);
         list.forEach(System.out::println);
 
@@ -138,17 +138,17 @@ public class TestLambda1 {
 
     //优化方式四：Stream API
     @Test
-    public void test7(){
+    public void test7() {
         emps.stream()
-                .filter((e) -> e.getAge() <= 35)
-                .forEach(System.out::println);
+            .filter((e) -> e.getAge() <= 35)
+            .forEach(System.out::println);
 
         System.out.println("----------------------------------------------");
 
         emps.stream()
-                .map(Employee::getName)
-                .limit(3)
-                .sorted()
-                .forEach(System.out::println);
+            .map(Employee::getName)
+            .limit(3)
+            .sorted()
+            .forEach(System.out::println);
     }
 }
